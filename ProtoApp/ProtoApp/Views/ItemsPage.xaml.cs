@@ -1,5 +1,6 @@
 ﻿using System;
-
+using System.Threading.Tasks;
+using ProtoApp.Helpers;
 using ProtoApp.Models;
 using ProtoApp.ViewModels;
 
@@ -8,15 +9,18 @@ using Xamarin.Forms;
 namespace ProtoApp.Views
 {
 	public partial class ItemsPage : ContentPage
-	{
-		ItemsViewModel viewModel;
+    {
+	    private readonly IItemsViewModel _viewModel;
 
 		public ItemsPage()
 		{
 			InitializeComponent();
-
-			BindingContext = viewModel = new ItemsViewModel();
 		}
+
+	    public ItemsPage(IItemsViewModel viewModel) : this()
+	    {
+	        BindingContext = _viewModel = viewModel;
+	    }
 
 	    public async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
 		{
@@ -39,8 +43,8 @@ namespace ProtoApp.Views
 		{
 			base.OnAppearing();
 
-			if (viewModel.Items.Count == 0)
-				viewModel.LoadItemsCommand.Execute(null);
+			if (_viewModel.Items.Count == 0)
+				_viewModel.LoadItemsCommand.Execute(null);
 		}
 	}
 }

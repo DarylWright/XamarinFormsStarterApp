@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace ProtoApp.ViewModels
 {
-	public class ItemsViewModel : BaseViewModel
+	public class ItemsViewModel : BaseViewModel, IItemsViewModel
 	{
 		public ObservableRangeCollection<Item> Items { get; set; }
 		public Command LoadItemsCommand { get; set; }
@@ -29,7 +29,7 @@ namespace ProtoApp.ViewModels
 			});
 		}
 
-		async Task ExecuteLoadItemsCommand()
+	    private async Task ExecuteLoadItemsCommand()
 		{
 			if (IsBusy)
 				return;
@@ -58,4 +58,10 @@ namespace ProtoApp.ViewModels
 			}
 		}
 	}
+
+    public interface IItemsViewModel
+    {
+        ObservableRangeCollection<Item> Items { get; set; }
+        Command LoadItemsCommand { get; set; }
+    }
 }
