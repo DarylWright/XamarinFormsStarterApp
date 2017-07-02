@@ -29,6 +29,9 @@ namespace ProtoApp.iOS
 
 	    private static void RegisterTypes(Container container)
 	    {
+	        // Register platform-specific types here
+
+            container.Register<AssetCollection, IosAssetCollection>(Lifestyle.Scoped);
 	    }
 	}
 }

@@ -24,9 +24,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\AboutPageFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\AssetCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\AssetIdentifier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\BonusPageFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\IAboutPageFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\IBonusPageFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\IItemsPageFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\IMainPageFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\ItemsPageFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\MainPageFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\BaseDataObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
@@ -34,6 +44,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\BonusPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\IItemDetailPageFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\INewItemPageFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\ItemDetailPageFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ItemsPage.xaml.cs">
       <DependentUpon>ItemsPage.xaml</DependentUpon>
     </Compile>
@@ -53,6 +66,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\NewItemPage.xaml.cs">
       <DependentUpon>NewItemPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\NewItemPageFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Services\" />

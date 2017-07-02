@@ -7,7 +7,6 @@ using ProtoApp.Models;
 
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(ProtoApp.Services.MockDataStore))]
 namespace ProtoApp.Services
 {
 	public class MockDataStore : IDataStore<Item>
@@ -28,7 +27,7 @@ namespace ProtoApp.Services
 		{
 			await InitializeAsync();
 
-			var _item = items.Where((Item arg) => arg.Id == item.Id).FirstOrDefault();
+			var _item = items.FirstOrDefault(arg => arg.Id == item.Id);
 			items.Remove(_item);
 			items.Add(item);
 
@@ -39,7 +38,7 @@ namespace ProtoApp.Services
 		{
 			await InitializeAsync();
 
-			var _item = items.Where((Item arg) => arg.Id == item.Id).FirstOrDefault();
+			var _item = items.FirstOrDefault(arg => arg.Id == item.Id);
 			items.Remove(_item);
 
 			return await Task.FromResult(true);

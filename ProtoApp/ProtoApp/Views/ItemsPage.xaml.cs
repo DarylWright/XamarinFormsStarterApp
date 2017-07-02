@@ -53,39 +53,4 @@ namespace ProtoApp.Views
 				_viewModel.LoadItemsCommand.Execute(default(object));
 		}
 	}
-
-    public interface INewItemPageFactory
-    {
-        Page CreateNewItemPage();
-    }
-
-    public class NewItemPageFactory : INewItemPageFactory
-    {
-        public Page CreateNewItemPage()
-        {
-            return new NewItemPage();
-        }
-    }
-
-    public interface IItemDetailPageFactory
-    {
-        ItemDetailPage CreateItemDetailPage(Item item);
-    }
-
-    public class ItemDetailPageFactory : IItemDetailPageFactory
-    {
-        private readonly IItemDetailViewModel _itemDetailViewModel;
-
-        public ItemDetailPageFactory(IItemDetailViewModel itemDetailViewModel)
-        {
-            _itemDetailViewModel = itemDetailViewModel;
-        }
-
-        public ItemDetailPage CreateItemDetailPage(Item item)
-        {
-            _itemDetailViewModel.Item = item;
-
-            return new ItemDetailPage(_itemDetailViewModel);
-        }
-    }
 }
