@@ -25,7 +25,9 @@ namespace ProtoApp.Services
 			await InitializeAsync();
 
 			var oldItem = _items.FirstOrDefault(arg => arg.Id == item.Id);
+
 			_items.Remove(oldItem);
+
 			_items.Add(item);
 
 			return await Task.FromResult(true);
@@ -35,8 +37,9 @@ namespace ProtoApp.Services
 		{
 			await InitializeAsync();
 
-			var _item = _items.FirstOrDefault(arg => arg.Id == item.Id);
-			_items.Remove(_item);
+			var toDelete = _items.FirstOrDefault(arg => arg.Id == item.Id);
+
+			_items.Remove(toDelete);
 
 			return await Task.FromResult(true);
 		}
@@ -60,7 +63,6 @@ namespace ProtoApp.Services
 			return Task.FromResult(true);
 		}
 
-
 		public Task<bool> SyncAsync()
 		{
 			return Task.FromResult(true);
@@ -71,9 +73,9 @@ namespace ProtoApp.Services
 			if (_isInitialized)
 				return;
 
-			_items = new List<Item>();
+		    await SyncAsync(); // Does nothing but get rid of async warning; nothing else is awaitable in this method for now
 
-			var items = new List<Item>
+			_items = new List<Item>
 			{
 				new Item { Id = Guid.NewGuid().ToString(), Text = "Buy some cat food", Description="The cats are hungry"},
 				new Item { Id = Guid.NewGuid().ToString(), Text = "Learn F#", Description="Seems like a functional idea"},
@@ -82,8 +84,6 @@ namespace ProtoApp.Services
 				new Item { Id = Guid.NewGuid().ToString(), Text = "Complete holiday shopping", Description="Keep it a secret!"},
 				new Item { Id = Guid.NewGuid().ToString(), Text = "Finish a todo list", Description="Done"},
 			};
-
-            _items.AddRange(items);
 
 			_isInitialized = true;
 		}
