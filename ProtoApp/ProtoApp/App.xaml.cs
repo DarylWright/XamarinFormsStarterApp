@@ -1,4 +1,6 @@
-﻿using ProtoApp.ViewModels;
+﻿using ProtoApp.Models;
+using ProtoApp.Services;
+using ProtoApp.ViewModels;
 using ProtoApp.Views;
 using SimpleInjector;
 using Xamarin.Forms;
@@ -32,6 +34,7 @@ namespace ProtoApp
 	        container.Register<IBonusPageFactory, BonusPageFactory>(Lifestyle.Scoped);
             container.Register<INewItemPageFactory, NewItemPageFactory>(Lifestyle.Scoped);
             container.Register<IItemDetailPageFactory, ItemDetailPageFactory>(Lifestyle.Scoped);
+            container.Register<IDataStore<Item>, MockDataStore>(Lifestyle.Scoped);
         }
 
 	    private static void SetMainPage(Container container)

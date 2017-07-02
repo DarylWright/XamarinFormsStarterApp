@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 using ProtoApp.Helpers;
 using ProtoApp.Models;
+using ProtoApp.Services;
 using ProtoApp.Views;
 
 using Xamarin.Forms;
@@ -12,20 +13,22 @@ namespace ProtoApp.ViewModels
 {
 	public class ItemsViewModel : BaseViewModel, IItemsViewModel
 	{
-		public ObservableRangeCollection<Item> Items { get; set; }
+	    private readonly IDataStore<Item> _dataStore;
+	    public ObservableRangeCollection<Item> Items { get; set; }
 		public Command LoadItemsCommand { get; set; }
 
-		public ItemsViewModel()
+		public ItemsViewModel(IDataStore<Item> dataStore)
 		{
-			Title = "Browse";
+		    _dataStore = dataStore;
+		    Title = "Browse";
 			Items = new ObservableRangeCollection<Item>();
 			LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
 			MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
 			{
-				var _item = item as Item;
+				var _item = item;
 				Items.Add(_item);
-				await DataStore.AddItemAsync(_item);
+				await _dataStore.AddItemAsync(_item);
 			});
 		}
 
@@ -39,7 +42,7 @@ namespace ProtoApp.ViewModels
 			try
 			{
 				Items.Clear();
-				var items = await DataStore.GetItemsAsync(true);
+				var items = await _dataStore.GetItemsAsync(true);
 				Items.ReplaceRange(items);
 			}
 			catch (Exception ex)
@@ -58,10 +61,4 @@ namespace ProtoApp.ViewModels
 			}
 		}
 	}
-
-    public interface IItemsViewModel
-    {
-        ObservableRangeCollection<Item> Items { get; set; }
-        Command LoadItemsCommand { get; set; }
-    }
 }

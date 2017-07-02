@@ -25,10 +25,4 @@ namespace ProtoApp.ViewModels
 		    set => SetProperty(ref _quantity, value);
 		}
 	}
-
-    public interface IItemDetailViewModel
-    {
-        Item Item { get; set; }
-        int Quantity { get; set; }
-    }
 }

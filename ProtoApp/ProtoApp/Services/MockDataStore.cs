@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using ProtoApp.Models;
-
-using Xamarin.Forms;
 
 namespace ProtoApp.Services
 {
 	public class MockDataStore : IDataStore<Item>
 	{
-		bool isInitialized;
-		List<Item> items;
+	    private bool _isInitialized;
+	    private List<Item> _items;
 
 		public async Task<bool> AddItemAsync(Item item)
 		{
 			await InitializeAsync();
 
-			items.Add(item);
+			_items.Add(item);
 
 			return await Task.FromResult(true);
 		}
@@ -27,9 +24,9 @@ namespace ProtoApp.Services
 		{
 			await InitializeAsync();
 
-			var _item = items.FirstOrDefault(arg => arg.Id == item.Id);
-			items.Remove(_item);
-			items.Add(item);
+			var oldItem = _items.FirstOrDefault(arg => arg.Id == item.Id);
+			_items.Remove(oldItem);
+			_items.Add(item);
 
 			return await Task.FromResult(true);
 		}
@@ -38,8 +35,8 @@ namespace ProtoApp.Services
 		{
 			await InitializeAsync();
 
-			var _item = items.FirstOrDefault(arg => arg.Id == item.Id);
-			items.Remove(_item);
+			var _item = _items.FirstOrDefault(arg => arg.Id == item.Id);
+			_items.Remove(_item);
 
 			return await Task.FromResult(true);
 		}
@@ -48,14 +45,14 @@ namespace ProtoApp.Services
 		{
 			await InitializeAsync();
 
-			return await Task.FromResult(items.FirstOrDefault(s => s.Id == id));
+			return await Task.FromResult(_items.FirstOrDefault(s => s.Id == id));
 		}
 
 		public async Task<IEnumerable<Item>> GetItemsAsync(bool forceRefresh = false)
 		{
 			await InitializeAsync();
 
-			return await Task.FromResult(items);
+			return await Task.FromResult(_items);
 		}
 
 		public Task<bool> PullLatestAsync()
@@ -71,11 +68,12 @@ namespace ProtoApp.Services
 
 		public async Task InitializeAsync()
 		{
-			if (isInitialized)
+			if (_isInitialized)
 				return;
 
-			items = new List<Item>();
-			var _items = new List<Item>
+			_items = new List<Item>();
+
+			var items = new List<Item>
 			{
 				new Item { Id = Guid.NewGuid().ToString(), Text = "Buy some cat food", Description="The cats are hungry"},
 				new Item { Id = Guid.NewGuid().ToString(), Text = "Learn F#", Description="Seems like a functional idea"},
@@ -85,12 +83,9 @@ namespace ProtoApp.Services
 				new Item { Id = Guid.NewGuid().ToString(), Text = "Finish a todo list", Description="Done"},
 			};
 
-			foreach (Item item in _items)
-			{
-				items.Add(item);
-			}
+            _items.AddRange(items);
 
-			isInitialized = true;
+			_isInitialized = true;
 		}
 	}
 }
