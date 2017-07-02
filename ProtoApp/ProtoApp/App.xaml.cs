@@ -26,9 +26,12 @@ namespace ProtoApp
 
             container.Register<IMainPageFactory, MainPageFactory>(Lifestyle.Scoped);
             container.Register<IItemsViewModel, ItemsViewModel>(Lifestyle.Scoped);
+            container.Register<IItemDetailViewModel, ItemDetailViewModel>(Lifestyle.Scoped);
             container.Register<IItemsPageFactory, ItemsPageFactory>(Lifestyle.Scoped);
 	        container.Register<IAboutPageFactory, AboutPageFactory>(Lifestyle.Scoped);
 	        container.Register<IBonusPageFactory, BonusPageFactory>(Lifestyle.Scoped);
+            container.Register<INewItemPageFactory, NewItemPageFactory>(Lifestyle.Scoped);
+            container.Register<IItemDetailPageFactory, ItemDetailPageFactory>(Lifestyle.Scoped);
         }
 
 	    private static void SetMainPage(Container container)
@@ -87,12 +90,12 @@ namespace ProtoApp
 
     public interface IBonusPageFactory
     {
-        BonusPage CreateBonusPage();
+        Page CreateBonusPage();
     }
 
     public class BonusPageFactory : IBonusPageFactory
     {
-        public BonusPage CreateBonusPage()
+        public Page CreateBonusPage()
         {
             return new BonusPage();
         }
@@ -100,12 +103,12 @@ namespace ProtoApp
 
     public interface IAboutPageFactory
     {
-        AboutPage CreateAboutPage();
+        Page CreateAboutPage();
     }
 
     public class AboutPageFactory : IAboutPageFactory
     {
-        public AboutPage CreateAboutPage()
+        public Page CreateAboutPage()
         {
             return new AboutPage();
         }
@@ -113,21 +116,27 @@ namespace ProtoApp
 
     public interface IItemsPageFactory
     {
-        ItemsPage CreateItemsPage();
+        Page CreateItemsPage();
     }
 
     public class ItemsPageFactory : IItemsPageFactory
     {
         private readonly IItemsViewModel _viewModel;
+        private readonly IItemDetailPageFactory _itemDetailPageFactory;
+        private readonly INewItemPageFactory _newItemPageFactory;
 
-        public ItemsPageFactory(IItemsViewModel viewModel)
+        public ItemsPageFactory(IItemsViewModel viewModel,
+                                IItemDetailPageFactory itemDetailPageFactory,
+                                INewItemPageFactory newItemPageFactory)
         {
             _viewModel = viewModel;
+            _itemDetailPageFactory = itemDetailPageFactory;
+            _newItemPageFactory = newItemPageFactory;
         }
 
-        public ItemsPage CreateItemsPage()
+        public Page CreateItemsPage()
         {
-            return new ItemsPage(_viewModel);
+            return new ItemsPage(_viewModel, _itemDetailPageFactory, _newItemPageFactory);
         }
     }
 }

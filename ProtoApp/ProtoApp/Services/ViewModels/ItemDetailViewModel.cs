@@ -2,20 +2,33 @@
 
 namespace ProtoApp.ViewModels
 {
-	public class ItemDetailViewModel : BaseViewModel
+	public class ItemDetailViewModel : BaseViewModel, IItemDetailViewModel
 	{
-		public Item Item { get; set; }
-		public ItemDetailViewModel(Item item = null)
-		{
-			Title = item.Text;
-			Item = item;
-		}
+	    private Item _item;
+	    public Item Item
+	    {
+	        get => _item;
+            set => SetItem(value);
+	    }
 
-		int quantity = 1;
+	    private void SetItem(Item item)
+	    {
+	        SetProperty(ref _item, item);
+
+	        Title = item.Text;
+	    }
+
+        private int _quantity = 1;
 		public int Quantity
 		{
-			get { return quantity; }
-			set { SetProperty(ref quantity, value); }
+			get => _quantity;
+		    set => SetProperty(ref _quantity, value);
 		}
 	}
+
+    public interface IItemDetailViewModel
+    {
+        Item Item { get; set; }
+        int Quantity { get; set; }
+    }
 }

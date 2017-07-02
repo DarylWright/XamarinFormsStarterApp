@@ -7,7 +7,7 @@ namespace ProtoApp.Views
 {
 	public partial class ItemDetailPage : ContentPage
 	{
-		ItemDetailViewModel _viewModel;
+	    private readonly IItemDetailViewModel _viewModel;
 
         // Note - The Xamarin.Forms Previewer requires a default, parameterless constructor to render a page.
         public ItemDetailPage()
@@ -15,10 +15,8 @@ namespace ProtoApp.Views
             InitializeComponent();
         }
 
-        public ItemDetailPage(ItemDetailViewModel viewModel)
+        public ItemDetailPage(IItemDetailViewModel viewModel) : this()
 		{
-			InitializeComponent();
-
 			BindingContext = _viewModel = viewModel;
 		}
 	}
