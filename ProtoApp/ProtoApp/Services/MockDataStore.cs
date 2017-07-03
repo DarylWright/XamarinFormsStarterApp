@@ -73,7 +73,7 @@ namespace ProtoApp.Services
 			if (_isInitialized)
 				return;
 
-		    await SyncAsync(); // Does nothing but get rid of async warning; nothing else is awaitable in this method for now
+		    await Task.FromResult(true); // Does nothing but get rid of async warning; nothing else is awaitable in this method for now
 
 			_items = new List<Item>
 			{

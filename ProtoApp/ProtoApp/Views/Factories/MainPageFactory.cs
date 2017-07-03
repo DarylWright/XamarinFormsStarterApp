@@ -6,17 +6,14 @@ namespace ProtoApp
     {
         private readonly IItemsPageFactory _itemsPageFactory;
         private readonly IAboutPageFactory _aboutPageFactory;
-        private readonly IBonusPageFactory _bonusPageFactory;
         private readonly AssetCollection _assetCollection;
 
         public MainPageFactory(IItemsPageFactory itemsPageFactory,
                                IAboutPageFactory aboutPageFactory,
-                               IBonusPageFactory bonusPageFactory,
                                AssetCollection assetCollection)
         {
             _itemsPageFactory = itemsPageFactory;
             _aboutPageFactory = aboutPageFactory;
-            _bonusPageFactory = bonusPageFactory;
             _assetCollection = assetCollection;
         }
 
@@ -35,11 +32,6 @@ namespace ProtoApp
                     {
                         Title = "About",
                         Icon = _assetCollection.FindAsset(AssetIdentifier.TabAboutPng)
-                    },
-                    new NavigationPage(_bonusPageFactory.CreateBonusPage())
-                    {
-                        Title = "Bonus",
-                        Icon = _assetCollection.FindAsset(AssetIdentifier.TabFeedPng)
                     }
                 }
             };

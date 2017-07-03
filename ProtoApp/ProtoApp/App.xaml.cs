@@ -31,7 +31,6 @@ namespace ProtoApp
             container.Register<IItemDetailViewModel, ItemDetailViewModel>(Lifestyle.Scoped);
             container.Register<IItemsPageFactory, ItemsPageFactory>(Lifestyle.Scoped);
 	        container.Register<IAboutPageFactory, AboutPageFactory>(Lifestyle.Scoped);
-	        container.Register<IBonusPageFactory, BonusPageFactory>(Lifestyle.Scoped);
             container.Register<INewItemPageFactory, NewItemPageFactory>(Lifestyle.Scoped);
             container.Register<IItemDetailPageFactory, ItemDetailPageFactory>(Lifestyle.Scoped);
             container.Register<IDataStore<Item>, MockDataStore>(Lifestyle.Scoped);

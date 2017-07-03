@@ -32,9 +32,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AssetCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AssetIdentifier.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\BonusPageFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\IAboutPageFactory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\IBonusPageFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\IItemsPageFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\IMainPageFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\ItemsPageFactory.cs" />
@@ -42,9 +40,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\BaseDataObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\BonusPage.xaml.cs">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\IItemDetailPageFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\INewItemPageFactory.cs" />
@@ -72,10 +67,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\BonusPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 </Project>
