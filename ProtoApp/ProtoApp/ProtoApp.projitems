@@ -24,6 +24,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ViewModels\IAboutViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ViewModels\IItemDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ViewModels\IItemsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\AboutPageFactory.cs" />

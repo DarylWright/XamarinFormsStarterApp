@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace ProtoApp.ViewModels
 {
-	public class AboutViewModel : BaseViewModel
+	public class AboutViewModel : BaseViewModel, IAboutViewModel
 	{
 		public AboutViewModel()
 		{

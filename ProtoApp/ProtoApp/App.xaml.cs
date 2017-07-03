@@ -29,6 +29,7 @@ namespace ProtoApp
             container.Register<IMainPageFactory, MainPageFactory>(Lifestyle.Scoped);
             container.Register<IItemsViewModel, ItemsViewModel>(Lifestyle.Scoped);
             container.Register<IItemDetailViewModel, ItemDetailViewModel>(Lifestyle.Scoped);
+            container.Register<IAboutViewModel, AboutViewModel>(Lifestyle.Scoped);
             container.Register<IItemsPageFactory, ItemsPageFactory>(Lifestyle.Scoped);
 	        container.Register<IAboutPageFactory, AboutPageFactory>(Lifestyle.Scoped);
             container.Register<INewItemPageFactory, NewItemPageFactory>(Lifestyle.Scoped);
