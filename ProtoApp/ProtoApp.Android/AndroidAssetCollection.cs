@@ -1,4 +1,4 @@
-namespace ProtoApp
+namespace ProtoApp.Droid
 {
     public class AndroidAssetCollection : AssetCollection
     {

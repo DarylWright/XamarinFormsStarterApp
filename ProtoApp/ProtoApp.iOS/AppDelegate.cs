@@ -1,5 +1,4 @@
-﻿
-using Foundation;
+﻿using Foundation;
 using SimpleInjector;
 using SimpleInjector.Lifestyles;
 using UIKit;

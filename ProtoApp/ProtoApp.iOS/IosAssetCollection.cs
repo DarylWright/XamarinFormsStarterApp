@@ -1,4 +1,4 @@
-namespace ProtoApp
+namespace ProtoApp.iOS
 {
     public class IosAssetCollection : AssetCollection
     {
