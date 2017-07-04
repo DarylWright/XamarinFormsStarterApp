@@ -27,8 +27,4 @@ namespace StarterApp.Views
 			await Navigation.PopToRootAsync();
 		}
 	}
-
-    public interface INewItemPage
-    {
-    }
 }

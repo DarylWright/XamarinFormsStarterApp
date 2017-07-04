@@ -29,9 +29,4 @@ namespace StarterApp.Views
 	        InitializeComponent();
         }
 	}
-
-    public interface IItemDetailPage
-    {
-        Item Item { get; set; }
-    }
 }

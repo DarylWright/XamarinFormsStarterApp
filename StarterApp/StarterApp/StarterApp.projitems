@@ -27,24 +27,21 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\ViewModels\IAboutViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ViewModels\IItemDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ViewModels\IItemsViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\AboutPageFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AssetCollection.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AssetIdentifier.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\IAboutPageFactory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\IItemsPageFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\IMainPageFactory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\ItemsPageFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\MainPageFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\BaseDataObject.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\IItemDetailPageFactory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\INewItemPageFactory.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\ItemDetailPageFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\IAboutPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\IItemDetailPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\IItemsPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\INewItemPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ItemsPage.xaml.cs">
       <DependentUpon>ItemsPage.xaml</DependentUpon>
     </Compile>
@@ -64,7 +61,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\NewItemPage.xaml.cs">
       <DependentUpon>NewItemPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Factories\NewItemPageFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />

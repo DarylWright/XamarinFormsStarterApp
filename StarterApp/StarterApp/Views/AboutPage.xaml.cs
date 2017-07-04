@@ -12,8 +12,4 @@ namespace StarterApp.Views
             BindingContext = viewModel;
 	    }
 	}
-
-    public interface IAboutPage
-    {
-    }
 }

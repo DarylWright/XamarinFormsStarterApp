@@ -51,8 +51,4 @@ namespace StarterApp.Views
 				_viewModel.LoadItemsCommand.Execute(default(object));
 		}
 	}
-
-    public interface IItemsPage
-    {
-    }
 }
