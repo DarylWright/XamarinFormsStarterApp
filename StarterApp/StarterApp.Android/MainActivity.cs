@@ -33,7 +33,6 @@ namespace StarterApp.Droid
         private static void RegisterTypes(Container container)
         {
             // Register platform-specific types here
-
             container.Register<AssetCollection, AndroidAssetCollection>(Lifestyle.Scoped);
         }
     }

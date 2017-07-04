@@ -1,21 +1,37 @@
-﻿using StarterApp.ViewModels;
+﻿using StarterApp.Models;
+using StarterApp.ViewModels;
 using Xamarin.Forms;
 
 namespace StarterApp.Views
 {
-	public partial class ItemDetailPage : ContentPage
+	public partial class ItemDetailPage : ContentPage, IItemDetailPage
 	{
 	    private readonly IItemDetailViewModel _viewModel;
+	    private Item _item;
 
-        // Note - The Xamarin.Forms Previewer requires a default, parameterless constructor to render a page.
-        public ItemDetailPage()
+	    public ItemDetailPage(IItemDetailViewModel viewModel)
         {
             InitializeComponent();
+
+            BindingContext = _viewModel = viewModel;
+		}
+
+	    public Item Item
+	    {
+	        get => _item;
+            set => SetItem(value);
         }
 
-        public ItemDetailPage(IItemDetailViewModel viewModel) : this()
-		{
-			BindingContext = _viewModel = viewModel;
-		}
+	    private void SetItem(Item value)
+	    {
+	        _viewModel.Item = _item = value;
+
+	        InitializeComponent();
+        }
 	}
+
+    public interface IItemDetailPage
+    {
+        Item Item { get; set; }
+    }
 }

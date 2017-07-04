@@ -7,23 +7,20 @@ using Xamarin.Forms;
 
 namespace StarterApp.Views
 {
-	public partial class ItemsPage : ContentPage
+	public partial class ItemsPage : ContentPage, IItemsPage
     {
-        private readonly IItemDetailPageFactory _itemDetailPageFactory;
-        private readonly INewItemPageFactory _newItemPageFactory;
+        private readonly IItemDetailPage _itemDetailPage;
+        private readonly INewItemPage _newItemPage;
         private readonly IItemsViewModel _viewModel;
 
-		public ItemsPage()
-		{
-			InitializeComponent();
-		}
-
 	    public ItemsPage(IItemsViewModel viewModel,
-                         IItemDetailPageFactory itemDetailPageFactory,
-                         INewItemPageFactory newItemPageFactory) : this()
+                         IItemDetailPage itemDetailPage,
+                         INewItemPage newItemPage)
 	    {
-	        _itemDetailPageFactory = itemDetailPageFactory;
-	        _newItemPageFactory = newItemPageFactory;
+	        InitializeComponent();
+
+            _itemDetailPage = itemDetailPage;
+	        _newItemPage = newItemPage;
 	        BindingContext = _viewModel = viewModel;
 	    }
 
@@ -32,8 +29,10 @@ namespace StarterApp.Views
 			var item = args.SelectedItem as Item;
 			if (item == null)
 				return;
+
+		    _itemDetailPage.Item = item;
             
-		    await Navigation.PushAsync(_itemDetailPageFactory.CreateItemDetailPage(item));
+		    await Navigation.PushAsync(_itemDetailPage as Page);
 
             // Manually deselect item
             ItemsListView.SelectedItem = default(object);
@@ -41,7 +40,7 @@ namespace StarterApp.Views
 
 	    public async void AddItem_Clicked(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(_newItemPageFactory.CreateNewItemPage());
+			await Navigation.PushAsync(_newItemPage as Page);
 		}
 
 		protected override void OnAppearing()
@@ -52,4 +51,8 @@ namespace StarterApp.Views
 				_viewModel.LoadItemsCommand.Execute(default(object));
 		}
 	}
+
+    public interface IItemsPage
+    {
+    }
 }

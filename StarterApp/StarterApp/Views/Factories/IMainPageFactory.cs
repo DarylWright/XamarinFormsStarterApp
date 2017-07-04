@@ -4,6 +4,6 @@ namespace StarterApp
 {
     public interface IMainPageFactory
     {
-        Page GetInstance();
+        Page GetMainPage();
     }
 }

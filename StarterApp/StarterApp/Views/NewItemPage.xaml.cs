@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace StarterApp.Views
 {
-	public partial class NewItemPage : ContentPage
+	public partial class NewItemPage : ContentPage, INewItemPage
 	{
 		public Item Item { get; set; }
 
@@ -27,4 +27,8 @@ namespace StarterApp.Views
 			await Navigation.PopToRootAsync();
 		}
 	}
+
+    public interface INewItemPage
+    {
+    }
 }

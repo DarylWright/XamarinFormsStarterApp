@@ -21,7 +21,8 @@ namespace StarterApp
 
         public Page CreateItemsPage()
         {
-            return new ItemsPage(_viewModel, _itemDetailPageFactory, _newItemPageFactory);
+            //return new ItemsPage(_viewModel, _itemDetailPageFactory, _newItemPageFactory);
+            return default(Page);
         }
     }
 }
